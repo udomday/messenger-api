@@ -7,9 +7,16 @@ create TABLE "user"(
 
 create TABLE "post"(
     id SERIAL PRIMARY KEY,
-    messange VARCHAR(255),
-    media VARCHAR(255),
+    messange VARCHAR(999),
     date DATE,
     user_id INTEGER,
     FOREIGN KEY (user_id) REFERENCES "user" (id) 
+);
+
+create TABLE "media"(
+    id SERIAL PRIMARY KEY,
+    type VARCHAR(255),
+    url_media VARCHAR(999) UNIQUE,
+    post_id INTEGER,
+    FOREIGN KEY (post_id) REFERENCES "post" (id)
 );
