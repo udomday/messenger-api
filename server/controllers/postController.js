@@ -8,7 +8,7 @@ class PostController{
     }
 
     async getPosts(req, res){
-        const getPosts = await db.query(`SELECT * FROM "post"`)
+        const getPosts = await db.query(`SELECT "post".id, messange, date, login, user_id FROM "post" JOIN "user" ON "post".user_id = "user".id`)
         res.json(getPosts.rows)
     }
 
